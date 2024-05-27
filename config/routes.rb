@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :bikes
   resources :rentals, only: %i[update]
-  get 'dashboards', to: "users#show"
+  get 'dashboards', to: "pages#show"
 end
