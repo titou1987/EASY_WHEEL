@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_132447) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_135921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bikes", force: :cascade do |t|
+    t.string "bike_name"
+    t.string "type"
+    t.text "description"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_bikes_on_user_id"
+  end
+
+  create_table "rentals", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "bike_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_rentals_on_bike_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,18 +45,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_132447) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-
-  create_table "bikes", force: :cascade do |t|
-    t.string "bike_name"
-    t.string "type"
-    t.text "description"
-    t.float "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-
   end
 
+  add_foreign_key "bikes", "users"
+  add_foreign_key "rentals", "bikes"
+  add_foreign_key "rentals", "users"
 end
