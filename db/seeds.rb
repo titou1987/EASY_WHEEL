@@ -1,20 +1,22 @@
 # db/seeds.rb
 
+puts 'Cleaning the database'
+
 Bike.destroy_all
 User.destroy_all
 
-
+puts 'Creating 10 users'
 users = [
-  { first_name: "John", last_name: "Doe", email: "john.doe@example.com", encrypted_password: "password" },
-  { first_name: "Jane", last_name: "Smith", email: "jane.smith@example.com", encrypted_password: "password" },
-  { first_name: "Alice", last_name: "Johnson", email: "alice.johnson@example.com", encrypted_password: "password" },
-  { first_name: "Bob", last_name: "Brown", email: "bob.brown@example.com", encrypted_password: "password" },
-  { first_name: "Charlie", last_name: "Davis", email: "charlie.davis@example.com", encrypted_password: "password" },
-  { first_name: "David", last_name: "Wilson", email: "david.wilson@example.com", encrypted_password: "password" },
-  { first_name: "Eve", last_name: "Clark", email: "eve.clark@example.com", encrypted_password: "password" },
-  { first_name: "Frank", last_name: "Wright", email: "frank.wright@example.com", encrypted_password: "password" },
-  { first_name: "Grace", last_name: "Hall", email: "grace.hall@example.com", encrypted_password: "password" },
-  { first_name: "Hannah", last_name: "Lewis", email: "hannah.lewis@example.com", encrypted_password: "password" }
+  { first_name: "John", last_name: "Doe", email: "john.doe@example.com", password: "password" },
+  { first_name: "Jane", last_name: "Smith", email: "jane.smith@example.com", password: "password" },
+  { first_name: "Alice", last_name: "Johnson", email: "alice.johnson@example.com", password: "password" },
+  { first_name: "Bob", last_name: "Brown", email: "bob.brown@example.com", password: "password" },
+  { first_name: "Charlie", last_name: "Davis", email: "charlie.davis@example.com", password: "password" },
+  { first_name: "David", last_name: "Wilson", email: "david.wilson@example.com", password: "password" },
+  { first_name: "Eve", last_name: "Clark", email: "eve.clark@example.com", password: "password" },
+  { first_name: "Frank", last_name: "Wright", email: "frank.wright@example.com", password: "password" },
+  { first_name: "Grace", last_name: "Hall", email: "grace.hall@example.com", password: "password" },
+  { first_name: "Hannah", last_name: "Lewis", email: "hannah.lewis@example.com", password: "password" }
 ]
 
 users.each do |user|
@@ -22,9 +24,11 @@ users.each do |user|
     first_name: user[:first_name],
     last_name: user[:last_name],
     email: user[:email],
-    encrypted_password: user[:encrypted_password]
+    password: user[:password]
   )
 end
+
+puts 'Creating 10 bikes'
 
 bikes = [
   {
@@ -67,7 +71,6 @@ bikes = [
     user_id: User.find_by(email: "charlie.davis@example.com").id,
     image_url: "https://www.amsterdamair.fr/img/c/5275.jpg"
   },
-  # Additional bikes
   {
     bike_name: "Family Cargo Bike",
     type: "Cargo",
