@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="column">
+    <div class="row d-flex m-4">
+      <div class= "col-8">
+        <img class= "img-fluid detail_img"src="https://images.unsplash.com/flagged/photo-1576934848835-f72df622a04b?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        <h1 class= "pt-2"><%= @bike.bike_name %></h1>
+        <div class="d-flex">
+          <div class="detail_type">
+            <%= @bike.type %>
+          </div>
+          <div class="detail_price">
+            <%= @bike.price %>
+          </div>
+        </div>
+          <%= @bike.description %>
+      </div>
+      <div class= "col-4">
+        <%=@bike.user.first_name %>
+      </div>
+
+
+    </div>
+  </div>
+</div>
