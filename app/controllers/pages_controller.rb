@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @rentals = Rental.all(params) # to update -- Rental Controller
   end
 
-  def show
-    ## TODO code dashboard controler!
+  def dashboard
+    @rentals = Rental.all
   end
 end
