@@ -1,4 +1,5 @@
 # db/seeds.rb
+require "open-uri"
 
 puts 'Cleaning the database'
 
@@ -30,6 +31,8 @@ end
 
 puts 'Creating 10 bikes'
 
+# image_1 = URI.open("https://images.unsplash.com/flagged/photo-1576934848835-f72df622a04b?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+
 bikes = [
   {
     bike_name: "Double Cargo Bike",
@@ -38,6 +41,7 @@ bikes = [
     price: 25.0,
     user_id: User.find_by(email: "john.doe@example.com").id,
     image_url: "https://images.unsplash.com/flagged/photo-1576934848835-f72df622a04b?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
   },
   {
     bike_name: "Yellow Tandem",
@@ -77,7 +81,7 @@ bikes = [
     description: "Perfect for family trips, this bike offers plenty of space and safety features to carry kids and groceries.",
     price: 28.0,
     user_id: User.find_by(email: "david.wilson@example.com").id,
-    image_url: "https://example.com/family_cargo_bike.jpg"
+    image_url: "https://cdn2.velo-on-line.fr/27488-large_default/biporteur-electrique-leader-fox-e-bike-family-one.webp"
   },
   {
     bike_name: "Sport Tandem",
@@ -85,7 +89,7 @@ bikes = [
     description: "This Sport Tandem is built for speed and endurance, ideal for competitive cyclists and fitness enthusiasts.",
     price: 32.0,
     user_id: User.find_by(email: "eve.clark@example.com").id,
-    image_url: "https://example.com/sport_tandem.jpg"
+    image_url: "https://www.monequipementsport.fr/media/catalog/product/cache/8c03cdee7bd61547753fd4bd98a5851c/v/e/velo-tandem-galaxy-noir.jpg"
   },
   {
     bike_name: "Kids Trailer",
@@ -93,7 +97,7 @@ bikes = [
     description: "A safe and fun trailer for carrying kids on your cycling adventures. Easy to attach and highly secure.",
     price: 22.0,
     user_id: User.find_by(email: "frank.wright@example.com").id,
-    image_url: "https://example.com/kids_trailer.jpg"
+    image_url: "https://www.hamax.com/wp-content/uploads/2022/07/Hamax-breeze-bike-trailer-kids-jogger-stroller2.jpg.webp"
   },
   {
     bike_name: "Electric Cargo Bike",
@@ -101,7 +105,7 @@ bikes = [
     description: "An electric cargo bike to make your transport easier and more efficient, perfect for urban commutes.",
     price: 45.0,
     user_id: User.find_by(email: "grace.hall@example.com").id,
-    image_url: "https://example.com/electric_cargo_bike.jpg"
+    image_url: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQEXwAuxGxwLEK4nYRutb3veQq6elu_KQrgvU-yiu9fLKipxUgw8Ky2hDTJqq_cB77PHPqo30ohHP_EYHTT9_89KfqXNqf9NiFft1mN1l4cR2FelqVVPWtyCg"
   },
   {
     bike_name: "Vintage Long Tail",
@@ -109,18 +113,22 @@ bikes = [
     description: "A stylish vintage long tail bike, combining classic looks with modern functionality. Great for city rides.",
     price: 38.0,
     user_id: User.find_by(email: "hannah.lewis@example.com").id,
-    image_url: "https://example.com/vintage_long_tail.jpg"
+    image_url: "https://i.pinimg.com/736x/d9/20/08/d92008ea880f5ae276ec472408d09daa.jpg"
   }
 ]
 
 bikes.each do |bike|
-  Bike.create!(
+  new_bike = Bike.new(
     bike_name: bike[:bike_name],
     type: bike[:type],
     description: bike[:description],
     price: bike[:price],
     user_id: bike[:user_id]
   )
+
+  image = URI.open(bike[:image_url]).read
+  new_bike.photo.attach(io: image, filename: bike[:image_url], content_type: "image/png")
+  new_bike.save!
 end
 
 puts "Created #{User.count} users and #{Bike.count} bikes."

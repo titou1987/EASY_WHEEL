@@ -57,7 +57,7 @@
 
 <% @bikes.each do |bike| %>
   <div class="card-product">
-    <img src="https://www.amsterdamair.fr/img/c/5275.jpg" alt="<%= bike.bike_name %>"/>
+    <img src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>"/>
     <div class="card-product-infos">
       <h2><%= bike.bike_name %></h2>
       <h3><%= bike.price %></h3>
