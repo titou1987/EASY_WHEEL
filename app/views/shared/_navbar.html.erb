@@ -12,7 +12,7 @@
             My Dashboard
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">My Renter Space</a></li>
+            <li><%= link_to 'My Renter Space', dashboards_path(current_user), class: 'dropdown-item' %></li>
             <li><a class="dropdown-item" href="#">My Owner Space</a></li>
           </ul>
         </div>
