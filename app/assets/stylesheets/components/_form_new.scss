@@ -1,0 +1,4 @@
+
+<%= simple_form_for(bike) do |f| %>
+  <%= f.input :photo, as: :file %>
+<% end %>
