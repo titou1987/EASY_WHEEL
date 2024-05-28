@@ -1,7 +1,13 @@
 class RentalsController < ApplicationController
-  def update
+  def accepted
     @rental = Rental.find(params[:id])
-    @rental.update(rental_params)
+    @rental.status = "accepted"
+    redirect_to dashboard_path, notice: "Rental updated successfully."
+  end
+
+  def declined
+    @rental = Rental.find(params[:id])
+    @rental.status = "declined"
     redirect_to dashboard_path, notice: "Rental updated successfully."
   end
 end
