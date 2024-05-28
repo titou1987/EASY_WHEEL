@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   end
 
   def show
-    ## TODO code dashboard controler
+    ## TODO code dashboard controler!
   end
 end
