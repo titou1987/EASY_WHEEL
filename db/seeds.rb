@@ -2,6 +2,9 @@
 require "open-uri"
 
 puts 'Cleaning the database'
+Bike.all.each do |bike|
+  bike.photo.purge
+end
 
 Bike.destroy_all
 User.destroy_all
@@ -126,7 +129,7 @@ bikes.each do |bike|
     user_id: bike[:user_id]
   )
 
-  image = URI.open(bike[:image_url]).read
+  image = URI.open(bike[:image_url])
   new_bike.photo.attach(io: image, filename: bike[:image_url], content_type: "image/png")
   new_bike.save!
 end
