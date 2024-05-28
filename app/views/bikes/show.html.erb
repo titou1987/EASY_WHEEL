@@ -21,3 +21,11 @@
     </div>
   </div>
 </div>
+
+<div>
+  <%= simple_form_for([@bike, @rental]) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+<% end %>
+</div>

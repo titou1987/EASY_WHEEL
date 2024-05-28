@@ -1,0 +1,7 @@
+<h1>Welcome to dashboard</h1>
+
+<% @rentals.each do |e| %>
+  <%= e.bike.bike_name %>
+  <%= e.start_date %>
+   <%= e.end_date %>
+<% end %>
