@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @rentals = Rental.all
+    @rentals = Rental.select { |rental| rental.bike.user_id == current_user.id }
+    @bikes = Bike.select { |bike| bike.user_id == current_user.id }
   end
 end

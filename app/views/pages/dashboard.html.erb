@@ -1,7 +1,25 @@
-<h1>Welcome to dashboard</h1>
-
-<% @rentals.each do |e| %>
-  <%= e.bike.bike_name %>
-  <%= e.start_date %>
-   <%= e.end_date %>
-<% end %>
+<div class="container">
+  <div class="column">
+    <div class="row"></div>
+    <h2>My rentals</h2>
+    <% @rentals.each do |e| %>
+      <div>
+        <%= e.bike.bike_name %>
+        <%= e.user.last_name %>
+        <%= e.user.first_name %>
+        <%= e.start_date %>
+        <%= e.end_date %>
+      </div>
+    <% end %>
+    <h2>My bikes</h2>
+    <% @bikes.each do |b| %>
+      <div>
+        <%= b.bike_name %>
+        <%= b.user.last_name %>
+        <%= b.user.first_name %>
+        <%= b.price %>
+        <%= b.type %>
+      </div>
+    <% end %>
+  </div>
+</div>
