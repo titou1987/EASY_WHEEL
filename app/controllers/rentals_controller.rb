@@ -6,6 +6,7 @@ class RentalsController < ApplicationController
     @bike = Bike.find(params[:bike_id])
     @rental.bike = @bike
     @rental.user = current_user
+    @rental.status = "pending"
 
     if @rental.save!
       redirect_to dashboards_path
