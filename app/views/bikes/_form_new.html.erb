@@ -1,0 +1,9 @@
+
+<%= simple_form_for(bike) do |f| %>
+  <%= f.input :bike_name %>
+  <%= f.input :type %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Create the bike", class: "btn btn-primary" %>
+<% end %>
