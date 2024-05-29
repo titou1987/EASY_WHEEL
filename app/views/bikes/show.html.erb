@@ -18,19 +18,19 @@
     </div>
 
   <div class= "col-4 pt-5">
-    <%= simple_form_for [@bike, @rental], html: { data: { controller: 'flatpickr' } } do |f| %>
+    <%= simple_form_for [@bike, @rental], html: { data: { controller: 'datepicker' } } do |f| %>
       <%= f.input :start_date,
                   as: :string,
                   input_html: {
                     data: {
-                      flatpickr_target: 'startDateInput'
+                      datepicker_target: 'startDateInput'
                     }
                   } %>
       <%= f.input :end_date,
                   as: :string,
                   input_html: {
                     data: {
-                      flatpickr_target: 'endDateInput'
+                      datepicker_target: 'endDateInput'
                     }
                   } %>
       <%= f.submit 'Book now!', class: 'btn btn-primary' %>
