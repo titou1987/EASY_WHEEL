@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :bikes do
+  resources :bikes, except: %i[index] do
     resources :rentals, only: %i[create]
   end
 
