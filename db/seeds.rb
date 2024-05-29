@@ -6,6 +6,7 @@ Bike.all.each do |bike|
   bike.photo.purge
 end
 
+Rental.destroy_all
 Bike.destroy_all
 User.destroy_all
 
