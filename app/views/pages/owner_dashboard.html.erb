@@ -32,14 +32,17 @@
 
     <h2>My bikes</h2>
     <%= link_to 'Add a bike', new_bike_path, class: 'btn btn-warning' %>
-    <% @bikes.each do |b| %>
-      <div>
-        <%= b.bike_name %>
-        <%= b.user.last_name %>
-        <%= b.user.first_name %>
-        <%= b.price %>
-        <%= b.type %>
+
+    <div class="d-flex flex-column ">
+  <% @bikes.each do |bike| %>
+    <%= link_to bike_path(bike), class: "card-product mx-auto justify-content-start" do %>
+      <img src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>"/>
+      <div class="card-product-infos">
+        <h2><%= bike.bike_name %></h2>
+        <h2><%= bike.price %> € per day</h2>
       </div>
     <% end %>
+  <% end %>
+</div>
   </div>
 </div>
