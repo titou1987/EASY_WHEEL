@@ -7,9 +7,10 @@ class RentalsController < ApplicationController
     @rental.bike = @bike
     @rental.user = current_user
     @rental.status = "pending"
+    # (@rental.end_date- @rental.start_date).to_int * @bike.price calcul du prix de la location
 
     if @rental.save!
-      redirect_to bike_path(@bike)
+      redirect_to renter_dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -19,13 +20,13 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
     @rental.status = "accepted"
 
-    redirect_to dashboards_path, notice: "Rental updated successfully."
+    redirect_to owner_dashboards_path, notice: "Rental updated successfully."
   end
 
   def declined
     @rental = Rental.find(params[:id])
     @rental.status = "declined"
-    redirect_to dashboards_path, notice: "Rental updated successfully."
+    redirect_to owner_dashboards_path, notice: "Rental updated successfully."
   end
 
   def renter_dashboard

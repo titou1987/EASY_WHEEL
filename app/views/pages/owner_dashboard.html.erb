@@ -1,17 +1,18 @@
-<div class="container">
+<div class="container m-3 p-3 shadow mx-auto rounded-3">
   <div class="column">
     <div class="row"></div>
-    <h2>My rentals</h2>
+    <h2 class="my-0 mx-4">My rentals</h2>
 
-    <table class="table">
+    <table class="table my-2">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Bike</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">First Name</th>
+          <th scope="col">Client</th>
           <th scope="col">Start date</th>
           <th scope="col">End date</th>
+          <th scope="col">Days</th>
+          <th scope="col">Total</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
@@ -20,26 +21,31 @@
           <tr>
             <th scope="row"><%= i + 1 %></th>
             <td><%= e.bike.bike_name %></td>
-            <td><%= e.user.last_name %></td>
-            <td><%= e.user.first_name %></td>
+            <td><%= e.user.first_name %> <%= e.user.last_name %></td>
             <td><%= e.start_date %></td>
             <td><%= e.end_date %></td>
+            <td><%= (e.end_date - e.start_date).to_i %></td>
+            <td><%= (e.end_date - e.start_date).to_i * e.bike.price %> €</td>
             <td><%= e.status %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <div class="d-flex my-4" >
+      <h2 class="my-0 mx-4">My bikes</h2>
+      <%= link_to 'Add a bike', new_bike_path, class: 'btn btn-warning' %>
+    </div>
 
-    <h2>My bikes</h2>
-    <%= link_to 'Add a bike', new_bike_path, class: 'btn btn-warning' %>
-    <% @bikes.each do |b| %>
       <div>
-        <%= b.bike_name %>
-        <%= b.user.last_name %>
-        <%= b.user.first_name %>
-        <%= b.price %>
-        <%= b.type %>
+        <% @bikes.each do |bike| %>
+          <%= link_to bike_path(bike), class: "card-product mx-auto justify-content-start" do %>
+            <img src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>"/>
+            <div class="card-product-infos">
+              <h2><%= bike.bike_name %></h2>
+              <h2><%= bike.price %> € per day</h2>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
   </div>
 </div>
