@@ -9,11 +9,11 @@
       <% if user_signed_in? %>
         <div class="dropdown me-5">
           <button class="btn btn-outline-warning dropdown-toggle btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            My Dashboard
+            My Dashboards
           </button>
           <ul class="dropdown-menu">
             <li><%= link_to 'My Owner Space', owner_dashboard_path(current_user), class: 'dropdown-item' %></li>
-            <li><a class="dropdown-item" href="#">My Owner Space</a></li>
+            <li><%= link_to 'My Renter Space', renter_dashboard_path, class: 'dropdown-item' %></li>
           </ul>
         </div>
         <li class="nav-item dropdown">
