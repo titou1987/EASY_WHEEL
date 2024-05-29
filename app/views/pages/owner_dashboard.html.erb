@@ -31,6 +31,7 @@
     </table>
 
     <h2>My bikes</h2>
+    <%= link_to 'Add a bike', new_bike_path, class: 'btn btn-warning' %>
     <% @bikes.each do |b| %>
       <div>
         <%= b.bike_name %>

@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :rentals, only: %i[update create]
   end
 
-  get 'owner_dashboard', to: "pages#dashboard"
+  get 'owner_dashboard', to: "pages#owner_dashboard"
   get 'renter_dashboard', to: "rentals#renterdashboard"
 end

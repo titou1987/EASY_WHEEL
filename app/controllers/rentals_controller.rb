@@ -9,7 +9,7 @@ class RentalsController < ApplicationController
     @rental.status = "pending"
 
     if @rental.save!
-      redirect_to dashboards_path
+      redirect_to bike_path(@bike)
     else
       render :new, status: :unprocessable_entity
     end
@@ -18,6 +18,7 @@ class RentalsController < ApplicationController
   def accepted
     @rental = Rental.find(params[:id])
     @rental.status = "accepted"
+
     redirect_to dashboards_path, notice: "Rental updated successfully."
   end
 
