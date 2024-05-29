@@ -1,0 +1,26 @@
+<div class="column">
+    <div class="row"></div>
+    <h2>Bikes I have booked!</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Bike</th>
+          <th scope="col">Start date</th>
+          <th scope="col">End date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rentals.each_with_index do |e,i| %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= e.bike.bike_name %></td>
+            <td><%= e.start_date %></td>
+            <td><%= e.end_date %></td>
+            <td><%= e.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

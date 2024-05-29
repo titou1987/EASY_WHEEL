@@ -28,6 +28,11 @@ class RentalsController < ApplicationController
     redirect_to dashboards_path, notice: "Rental updated successfully."
   end
 
+  def renter_dashboard
+    @rentals = Rental.select { |rental| rental.user_id == current_user.id }
+    # ou @rentals = Rental.where(user_id: current_user.id)
+  end
+
   private
 
   def rental_params
