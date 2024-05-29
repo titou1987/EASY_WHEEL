@@ -7,6 +7,7 @@ class RentalsController < ApplicationController
     @rental.bike = @bike
     @rental.user = current_user
     @rental.status = "pending"
+    # (@rental.end_date- @rental.start_date).to_int * @bike.price calcul du prix de la location
 
     if @rental.save!
       redirect_to bike_path(@bike)
