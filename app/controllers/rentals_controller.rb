@@ -9,10 +9,10 @@ class RentalsController < ApplicationController
     @rental.status = "pending"
     # (@rental.end_date- @rental.start_date).to_int * @bike.price calcul du prix de la location
 
-    if @rental.save!
+    if @rental.save
       redirect_to renter_dashboard_path
     else
-      render :new, status: :unprocessable_entity
+      redirect_to bike_path(@bike),  notice: 'Please select a date'
     end
   end
 
