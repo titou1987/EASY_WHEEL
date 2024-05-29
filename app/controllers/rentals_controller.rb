@@ -12,7 +12,8 @@ class RentalsController < ApplicationController
     if @rental.save
       redirect_to renter_dashboard_path
     else
-      redirect_to bike_path(@bike),  notice: 'Please select a date'
+      render :new, status: :unprocessable_entity
+      # redirect_to bike_path(@bike),  notice: 'Please select a date'
     end
   end
 
