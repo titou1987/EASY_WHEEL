@@ -24,9 +24,10 @@
             <td><%= rental.user.first_name %> <%= rental.user.last_name %></td>
             <td><%= rental.start_date %></td>
             <td><%= rental.end_date %></td>
-            <td><%= (rental.end_date - rental.start_date).to_i %></td>
-            <td><%= (rental.end_date - rental.start_date).to_i * rental.bike.price %> €</td>
+            <td><%= (rental.end_date - rental.start_date + 1).to_i %></td>
+            <td><%= (rental.end_date - rental.start_date + 1).to_i * rental.bike.price %> €</td>
             <td>
+              <% if rental.status == "pending" %>
               <div class="dropdown me-5">
                 <button class="btn btn-outline-warning dropdown-toggle btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <%= rental.status %>
@@ -44,6 +45,9 @@
                   </li>
                 </ul>
               </div>
+              <% else %>
+                <%= rental.status %>
+              <% end %>
             </td>
           </tr>
         <% end %>
