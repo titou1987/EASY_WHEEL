@@ -3,19 +3,17 @@
       <div class= "col-12">
         <img class= "img-fluid detail_img shadow" src="<%= cl_image_path @bike.photo.key %>" />
         <h1 class= "pt-2"><%= @bike.bike_name %></h1>
-        <div class= "col-4">
+        <div class= "col-4">Owner:
           <%=@bike.user.first_name %>
           <%=@bike.user.last_name %>
         </div>
-        <div class="d-flex">
-          <div class="detail_type">
-            <%= @bike.type %>
-          </div>
-          <div class="detail_price">
-            <%= @bike.price %>
-          </div>
+        <div class="detail_type">
+          <%= @bike.type %>
         </div>
-          <%= @bike.description %>
+        <div class="detail_price">
+          <p><strong><%= @bike.price %> €</strong> per day</p>
+        </div>
+        <%= @bike.description %>
       </div>
     </div>
 
@@ -23,7 +21,7 @@
     <%= simple_form_for([@bike, @rental]) do |f| %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    <%= f.submit %>
+    <%= f.submit "Book", class: "btn btn-warning" %>
   <% end %>
   </div>
 
