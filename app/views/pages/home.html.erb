@@ -7,47 +7,48 @@
 
 <div class="container my-4">
 <div class="d-flex justify-content-evenly mb-3">
-  <div class="btn-group mr-2">
-    <button type="button" class="btn btn-warning dropdown-toggle">
+  <div class="dropdown">
+    <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Type
     </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Cargo</a>
-      <a class="dropdown-item" href="#">Tandem</a>
-      <a class="dropdown-item" href="#">Trailer</a>
-      <a class="dropdown-item" href="#">Long Tail</a>
-    </div>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Cargo</a></li>
+      <li><a class="dropdown-item" href="#">Tandem</a></li>
+      <li><a class="dropdown-item" href="#">Trailer</a></li>
+      <li><a class="dropdown-item" href="#">Long Tail</a></li>
+    </ul>
   </div>
 
-  <div class="btn-group mr-2">
-    <button type="button" class="btn btn-warning dropdown-toggle">
-      Prix
+  <div class="dropdown">
+    <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Price
     </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">0 - 20€</a>
-      <a class="dropdown-item" href="#">20 - 40€</a>
-      <a class="dropdown-item" href="#">40 - 60€</a>
-      <a class="dropdown-item" href="#">60€ et plus</a>
-    </div>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">0 - 20€</a></li>
+      <li><a class="dropdown-item" href="#">20 - 40€</a></li>
+      <li><a class="dropdown-item" href="#">40 - 60€</a></li>
+      <li><a class="dropdown-item" href="#">60€ et more</a></li>
+    </ul>
   </div>
 
-  <div class="btn-group">
-    <button type="button" class="btn btn-warning dropdown-toggle">
-      Département
+
+  <div class="dropdown">
+    <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      City
     </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Paris</a>
-      <a class="dropdown-item" href="#">Lyon</a>
-      <a class="dropdown-item" href="#">Marseille</a>
-      <a class="dropdown-item" href="#">Toulouse</a>
-    </div>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Paris</a></li>
+      <li><a class="dropdown-item" href="#">Lyon</a></li>
+      <li><a class="dropdown-item" href="#">Marseille</a></li>
+      <li><a class="dropdown-item" href="#">Toulouse</a></li>
+    </ul>
   </div>
 </div>
 </div>
 
 <div class="d-flex flex-column">
   <% @bikes.each do |bike| %>
-    <%= link_to bike_path(bike), class: "card-product mx-auto" do %>
+    <%= link_to bike_path(bike), class: "card-product mx-auto justify-content-start" do %>
       <img src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>"/>
       <div class="card-product-infos">
         <h2><%= bike.bike_name %></h2>
