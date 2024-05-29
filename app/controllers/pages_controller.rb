@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @bikes = Bike.all
   end
 
-  def dashboard
+  def owner_dashboard
     @rentals = Rental.select { |rental| rental.bike.user_id == current_user.id }
     @bikes = Bike.select { |bike| bike.user_id == current_user.id }
   end
