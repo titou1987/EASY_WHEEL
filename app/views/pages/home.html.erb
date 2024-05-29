@@ -47,7 +47,7 @@
 
 <div class="d-flex flex-column">
   <% @bikes.each do |bike| %>
-    <%= link_to bike_path(bike), class: "card-product mx-auto" do %>
+    <%= link_to bike_path(bike), class: "card-product mx-auto justify-content-start" do %>
       <img src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>"/>
       <div class="card-product-infos">
         <h2><%= bike.bike_name %></h2>
