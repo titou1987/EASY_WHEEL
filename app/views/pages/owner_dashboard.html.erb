@@ -17,16 +17,38 @@
         </tr>
       </thead>
       <tbody>
-        <% @rentals.each_with_index do |e,i| %>
+        <% @rentals.each_with_index do |rental,i| %>
           <tr>
             <th scope="row"><%= i + 1 %></th>
-            <td><%= e.bike.bike_name %></td>
-            <td><%= e.user.first_name %> <%= e.user.last_name %></td>
-            <td><%= e.start_date %></td>
-            <td><%= e.end_date %></td>
-            <td><%= (e.end_date - e.start_date).to_i %></td>
-            <td><%= (e.end_date - e.start_date).to_i * e.bike.price %> €</td>
-            <td><%= e.status %></td>
+            <td><%= rental.bike.bike_name %></td>
+            <td><%= rental.user.first_name %> <%= rental.user.last_name %></td>
+            <td><%= rental.start_date %></td>
+            <td><%= rental.end_date %></td>
+            <td><%= (rental.end_date - rental.start_date + 1).to_i %></td>
+            <td><%= (rental.end_date - rental.start_date + 1).to_i * rental.bike.price %> €</td>
+            <td>
+              <% if rental.status == "pending" %>
+              <div class="dropdown me-5">
+                <button class="btn btn-outline-warning dropdown-toggle btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= rental.status %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Accept',
+                      rental_path(rental, rental: { status: 'approved' }),
+                      data: { turbo_method: :patch },
+                      class: 'dropdown-item' %>
+                  </li>
+                  <li><%= link_to 'Decline',
+                      rental_path(rental, rental: { status: 'declined' }),
+                      data: { turbo_method: :patch },
+                      class: 'dropdown-item' %>
+                  </li>
+                </ul>
+              </div>
+              <% else %>
+                <%= rental.status %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
