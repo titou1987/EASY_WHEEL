@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
 
   get 'owner_dashboard', to: "pages#dashboard"
-  get 'renter_dashboard', to: "rentals#renterdashboard"
+  get 'renter_dashboard', to: "rentals#renter_dashboard"
 end
