@@ -41,9 +41,6 @@
 .cards-grid {
   display: flex;
   flex-wrap: wrap;
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
-  // grid-gap: 16px;
 }
 
 .card-index {
@@ -82,4 +79,7 @@
   margin-top: 8px;
 }
 
-
+.datepicker {
+  position: sticky;
+  top: 0;
+  align-self: flex-start; /* Assurez-vous que la div est alignée au début de la colonne */
