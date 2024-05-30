@@ -3,6 +3,8 @@ class BikesController < ApplicationController
 
   def index
     @bikes = Bike.all
+    @bikes = @bikes.where(type: params[:type]) if params[:type].present?
+    @bikes = @bikes.where(price: price_range(params[:price])) if params[:price].present?
   end
 
   def new
@@ -41,5 +43,20 @@ class BikesController < ApplicationController
 
   def bike_params
     params.require(:bike).permit(:bike_name, :description, :type, :price, :photo)
+  end
+end
+
+def price_range(price_param)
+  case price_param
+  when "0-20"
+    0..20
+  when "20-40"
+    20..40
+  when "40-60"
+    40..60
+  when "60+"
+    60..Float::INFINITY
+  else
+    nil
   end
 end
