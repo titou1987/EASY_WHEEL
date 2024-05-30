@@ -7,21 +7,6 @@
   </video>
 </div>
 
-
-<div class="card-map-container">
-<div >
-  <div class="cards-grid">
-    <% @bikes.each do |bike| %>
-      <%= link_to bike_path(bike), class: "card card-index mx-auto justify-content-start" do %>
-        <img class="card-img-top" src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>">
-        <div class="card-body">
-          <h2><%= bike.bike_name %></h2>
-          <h3><%= bike.price %> € per day</h3>
-          <p><%= bike.description %></p>
-        </div>
-      <% end %>
-    <% end %>
-
 <div class="content">
   <h1>Easy Wheel</h1>
   <p>Rent a bike for any occasion or turn your wheels into cash!</p>
