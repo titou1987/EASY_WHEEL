@@ -53,11 +53,10 @@
         <img class="card-img-top" src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>">
         <div class="card-body">
           <h2><%= bike.bike_name %></h2>
-          <h3><%= bike.price %> € per day</h3>
+          <h3><strong><%= bike.price.to_i %> €</strong> per day</h3>
           <p><%= bike.description %></p>
         </div>
       <% end %>
     <% end %>
   </div>
 </div>
-

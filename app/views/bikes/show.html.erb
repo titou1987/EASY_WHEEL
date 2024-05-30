@@ -1,23 +1,29 @@
-<div class="container d-flex m-3 p-3 shadow mx-auto rounded-3" data-controller="datepicker">
-    <div class="row d-flex m-4">
+<div class="container d-flex" data-controller="datepicker">
+    <div class="row d-flex me-3 my-3 mx-auto rounded-5">
       <div class= "col-12">
-        <img class= "img-fluid detail_img shadow" src="<%= cl_image_path @bike.photo.key %>" />
-        <h1 class= "pt-2"><%= @bike.bike_name %></h1>
+        <div class="showimage"><img class= "w-100 h-100 img-fluid detail_img rounded-5 object-fit-cover object-position-center" src="<%= cl_image_path @bike.photo.key %>"/></div>
+        <br>
+        <div class="border rounded-5 p-4">
+        <h1><%= @bike.bike_name %></h1>
         <div class= "col-4">Owner:
           <%=@bike.user.first_name %>
           <%=@bike.user.last_name %>
         </div>
+        <br>
         <div class="detail_type">
           <%= @bike.type %>
         </div>
+        <br>
         <div class="detail_price">
-          <p><strong><span data-datepicker-target="price"><%= @bike.price %></span> €</strong> per day</p>
+          <h3><strong><span data-datepicker-target="price"><%= @bike.price.to_i %></span> €</strong> per day</h3>
         </div>
+        <h4>Description</h4>
         <%= @bike.description %>
+        </div>
       </div>
     </div>
 
-  <div class= "datepicker col-4 pt-5">
+  <div class= "datepicker col-4 m-3 p-3 border mx-auto rounded-5">
     <%= simple_form_for [@bike, @rental], html: { data: { action: 'change->datepicker#display_price' } } do |f| %>
       <%= f.input :start_date,
                   as: :string,
