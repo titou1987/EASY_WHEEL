@@ -5,6 +5,9 @@ puts 'Cleaning the database'
 Bike.all.each do |bike|
   bike.photo.purge
 end
+User.all.each do |user|
+  user.photo.purge
+end
 
 Rental.destroy_all
 Bike.destroy_all
@@ -12,30 +15,34 @@ User.destroy_all
 
 puts 'Creating 10 users'
 users = [
-  { first_name: "John", last_name: "Doe", email: "john.doe@example.com", password: "password" },
-  { first_name: "Jane", last_name: "Smith", email: "jane.smith@example.com", password: "password" },
-  { first_name: "Alice", last_name: "Johnson", email: "alice.johnson@example.com", password: "password" },
-  { first_name: "Bob", last_name: "Brown", email: "bob.brown@example.com", password: "password" },
-  { first_name: "Charlie", last_name: "Davis", email: "charlie.davis@example.com", password: "password" },
-  { first_name: "David", last_name: "Wilson", email: "david.wilson@example.com", password: "password" },
-  { first_name: "Eve", last_name: "Clark", email: "eve.clark@example.com", password: "password" },
-  { first_name: "Frank", last_name: "Wright", email: "frank.wright@example.com", password: "password" },
-  { first_name: "Grace", last_name: "Hall", email: "grace.hall@example.com", password: "password" },
-  { first_name: "Hannah", last_name: "Lewis", email: "hannah.lewis@example.com", password: "password" }
+  { first_name: "John", last_name: "Doe", email: "john.doe@example.com", password: "password", address: "12 Rue de la Liberté, 75003 Paris, France", image_url: "https://thispersondoesnotexist.com/"},
+  { first_name: "Jane", last_name: "Smith", email: "jane.smith@example.com", password: "password", address: "25 Avenue des Champs-Élysées, 75008 Paris, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "Alice", last_name: "Johnson", email: "alice.johnson@example.com", password: "password", address: "8 Boulevard Saint-Germain, 75005 Paris, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "Bob", last_name: "Brown", email: "bob.brown@example.com", password: "password", address: "15 Rue de Rivoli, 75004 Paris, France", image_url: "https://thispersondoesnotexist.com/"},
+  { first_name: "Charlie", last_name: "Davis", email: "charlie.davis@example.com", password: "password", address: "42 Rue de la Paix, 75002 Paris, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "David", last_name: "Wilson", email: "david.wilson@example.com", password: "password", address: "42 Rue de la Paix, 75002 Paris, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "Eve", last_name: "Clark", email: "eve.clark@example.com", password: "password", address: "15 Avenue Jean Jaurès, 69007 Lyon, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "Frank", last_name: "Wright", email: "frank.wright@example.com", password: "password", address: "22 Quai Saint-Antoine, 69002 Lyon, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "Grace", last_name: "Hall", email: "grace.hall@example.com", password: "password", address: "18 Rue du Taur, 31000 Toulouse, France", image_url: "https://thispersondoesnotexist.com/" },
+  { first_name: "Hannah", last_name: "Lewis", email: "hannah.lewis@example.com", password: "password", address: "25 Rue Paradis, 13001 Marseille, France", image_url: "https://thispersondoesnotexist.com/" }
 ]
 
 users.each do |user|
-  User.create!(
+  new_user = User.new(
     first_name: user[:first_name],
     last_name: user[:last_name],
     email: user[:email],
-    password: user[:password]
+    password: user[:password],
+    address: user[:address]
   )
+
+  image = URI.open(user[:image_url])
+  new_user.photo.attach(io: image, filename: user[:image_url], content_type: "image/png")
+  new_user.save!
 end
 
 puts 'Creating 10 bikes'
 
-# image_1 = URI.open("https://images.unsplash.com/flagged/photo-1576934848835-f72df622a04b?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
 bikes = [
   {
