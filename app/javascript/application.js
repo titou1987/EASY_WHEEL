@@ -3,3 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+
+// import DatePicker from "./controllers/date_picker_controller.js"
+// Stimulus.register("date-picker", DatePickerController)
