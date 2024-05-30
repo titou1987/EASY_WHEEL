@@ -5,17 +5,18 @@
 </div>
 </div>
 
-<div class="container my-4">
+<div class="container my-4" id="results">
   <div class="d-flex justify-content-evenly mb-3">
     <div class="dropdown">
       <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Type
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Cargo</a></li>
-        <li><a class="dropdown-item" href="#">Tandem</a></li>
-        <li><a class="dropdown-item" href="#">Trailer</a></li>
-        <li><a class="dropdown-item" href="#">Long Tail</a></li>
+        <%= link_to 'All', root_path(anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Cargo', root_path(type: 'Cargo', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Tandem', root_path(type: 'Tandem', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Trailer', root_path(type: 'Trailer', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Long Tail', root_path(type: 'Long Tail', anchor: "results"), class: 'dropdown-item' %>
       </ul>
     </div>
 
@@ -24,10 +25,11 @@
         Price
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">0 - 20€</a></li>
-        <li><a class="dropdown-item" href="#">20 - 40€</a></li>
-        <li><a class="dropdown-item" href="#">40 - 60€</a></li>
-        <li><a class="dropdown-item" href="#">60€ et more</a></li>
+        <%= link_to 'All', root_path(anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '0 - 20€', root_path(price: '0-20', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '20 - 40€', root_path(price: '20-40', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '40 - 60€', root_path(price: '40-60', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '60€ et plus', root_path(price: '60+', anchor: "results"), class: 'dropdown-item' %>
       </ul>
     </div>
 
