@@ -1,0 +1,4 @@
+<h2><%= user.bikes.first.bike_name %></h2>
+<img  class= "popup-img" src="<%= cl_image_path user.bikes.first.photo.key %>">
+<p><%= user.bikes.first.price %></p>
+<%= link_to 'Book now', bike_path(user.bikes.first), class: 'btn btn-warning' %>
