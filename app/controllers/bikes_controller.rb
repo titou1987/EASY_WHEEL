@@ -1,5 +1,5 @@
 class BikesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
+  skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
     @bikes = Bike.all
@@ -12,7 +12,7 @@ class BikesController < ApplicationController
   def show
     @bike = Bike.find(params[:id])
     @rental = Rental.new
-    
+
   end
 
   def create
