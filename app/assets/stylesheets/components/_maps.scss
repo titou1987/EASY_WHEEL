@@ -1,0 +1,30 @@
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.popup-img {
+  height: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mapboxgl-popup h2 {
+  font-size: 16px;
+  color: $blueJO;
+  font-weight: bold;
+}
+
+.marker {
+font-size: 15px !important;
+}
+
+.mapboxgl-popup p {
+  font-size: 14px;
+  color: $blueJO;
+  font-weight: bold;
+}
