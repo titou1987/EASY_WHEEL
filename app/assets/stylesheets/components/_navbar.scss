@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,9 +17,22 @@
 }
 
 .nav-link {
-  color: #022366;
+  background-color: transparent;
+  color: $blueJO;
+  border: 2px solid $blueJO;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: white;
+    color: $blueJO;
+  }
 }
 
 .btn-custom {
   color: $blueJO;
+  background: transparent;
 }

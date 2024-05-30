@@ -1,62 +1,12 @@
-<div class="banner shadow-lg" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1607623618478-384d71c091d0?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
-<div class="container text-center">
-  <h1><strong>Easy Wheel</strong></h1>
-  <p>Find the<strong> best bikes</strong> around<strong> you.</strong></p>
+<body class="homepage">
+<div class="video-background">
+  <video autoplay loop muted>
+    <source src="<%= asset_path('videobikes.mp4') %>" type="video/mp4">
+    <!-- Si la vidéo n'est pas supportée -->
+    Votre navigateur ne supporte pas la lecture de vidéos au format MP4.
+  </video>
 </div>
-</div>
 
-<div class="container my-4" id="results">
-  <div class="d-flex justify-content-evenly mb-3">
-    <div class="dropdown">
-      <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Type
-      </button>
-      <ul class="dropdown-menu">
-        <%= link_to 'All', root_path(anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Cargo', root_path(type: 'Cargo', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Tandem', root_path(type: 'Tandem', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Trailer', root_path(type: 'Trailer', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Long Tail', root_path(type: 'Long Tail', anchor: "results"), class: 'dropdown-item' %>
-      </ul>
-    </div>
-
-    <div class="dropdown">
-      <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Price
-      </button>
-      <ul class="dropdown-menu">
-        <%= link_to 'All', root_path(anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '0 - 20€', root_path(price: '0-20', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '20 - 40€', root_path(price: '20-40', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '40 - 60€', root_path(price: '40-60', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '60€ et plus', root_path(price: '60+', anchor: "results"), class: 'dropdown-item' %>
-      </ul>
-    </div>
-
-
-    <div class="dropdown">
-      <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        City
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Paris</a></li>
-        <li><a class="dropdown-item" href="#">Lyon</a></li>
-        <li><a class="dropdown-item" href="#">Marseille</a></li>
-        <li><a class="dropdown-item" href="#">Toulouse</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="cards-grid">
-    <% @bikes.each do |bike| %>
-      <%= link_to bike_path(bike), class: "card card-index mx-auto justify-content-start" do %>
-        <img class="card-img-top" src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>">
-        <div class="card-body">
-          <h2><%= bike.bike_name %></h2>
-          <h3><strong><%= bike.price.to_i %> €</strong> per day</h3>
-          <p><%= bike.description %></p>
-        </div>
-      <% end %>
-    <% end %>
   </div>
 </div>
+</body>
