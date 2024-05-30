@@ -5,17 +5,18 @@
 </div>
 </div>
 
-<div class="container my-4">
+<div class="container my-4" id="results">
   <div class="d-flex justify-content-evenly mb-3">
     <div class="dropdown">
       <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Type
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Cargo</a></li>
-        <li><a class="dropdown-item" href="#">Tandem</a></li>
-        <li><a class="dropdown-item" href="#">Trailer</a></li>
-        <li><a class="dropdown-item" href="#">Long Tail</a></li>
+        <%= link_to 'All', bikes_path(anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Cargo', bikes_path(type: 'Cargo', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Tandem', bikes_path(type: 'Tandem', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Trailer', bikes_path(type: 'Trailer', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Long Tail', bikes_path(type: 'Long Tail', anchor: "results"), class: 'dropdown-item' %>
       </ul>
     </div>
 
@@ -24,10 +25,11 @@
         Price
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">0 - 20€</a></li>
-        <li><a class="dropdown-item" href="#">20 - 40€</a></li>
-        <li><a class="dropdown-item" href="#">40 - 60€</a></li>
-        <li><a class="dropdown-item" href="#">60€ et more</a></li>
+        <%= link_to 'All', bikes_path(anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '0 - 20€', bikes_path(price: '0-20', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '20 - 40€', bikes_path(price: '20-40', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '40 - 60€', bikes_path(price: '40-60', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to '60€ et plus', bikes_path(price: '60+', anchor: "results"), class: 'dropdown-item' %>
       </ul>
     </div>
 
@@ -51,7 +53,7 @@
         <img class="card-img-top" src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>">
         <div class="card-body">
           <h2><%= bike.bike_name %></h2>
-          <h3><%= bike.price %> € per day</h3>
+          <h3><strong><%= bike.price.to_i %> €</strong> per day</h3>
           <p><%= bike.description %></p>
         </div>
       <% end %>
