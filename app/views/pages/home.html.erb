@@ -7,47 +7,6 @@
   </video>
 </div>
 
-<div class="container my-4" id="results">
-  <div class="d-flex justify-content-evenly mb-3">
-    <div class="dropdown">
-      <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Type
-      </button>
-      <ul class="dropdown-menu">
-        <%= link_to 'All', root_path(anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Cargo', root_path(type: 'Cargo', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Tandem', root_path(type: 'Tandem', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Trailer', root_path(type: 'Trailer', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to 'Long Tail', root_path(type: 'Long Tail', anchor: "results"), class: 'dropdown-item' %>
-      </ul>
-    </div>
-
-    <div class="dropdown">
-      <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Price
-      </button>
-      <ul class="dropdown-menu">
-        <%= link_to 'All', root_path(anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '0 - 20€', root_path(price: '0-20', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '20 - 40€', root_path(price: '20-40', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '40 - 60€', root_path(price: '40-60', anchor: "results"), class: 'dropdown-item' %>
-        <%= link_to '60€ et plus', root_path(price: '60+', anchor: "results"), class: 'dropdown-item' %>
-      </ul>
-    </div>
-
-    <div class="dropdown">
-      <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        City
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Paris</a></li>
-        <li><a class="dropdown-item" href="#">Lyon</a></li>
-        <li><a class="dropdown-item" href="#">Marseille</a></li>
-        <li><a class="dropdown-item" href="#">Toulouse</a></li>
-      </ul>
-    </div>
-  </div>
-
 <div class="card-map-container">
 <div >
   <div class="cards-grid">
