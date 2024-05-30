@@ -37,8 +37,49 @@
   padding: 16px;
 }
 
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-index {
+  width: 18rem;
+  margin: 16px;
+  text-decoration: none;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  color: $blueJO;
+}
+
+.card-index img {
+  height: 250px;
+  object-fit: cover;
+}
+.card-index h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 2px;
+}
+.card-index h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.card-index p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
 .datepicker {
   position: sticky;
   top: 0;
   align-self: flex-start; /* Assurez-vous que la div est alignée au début de la colonne */
-}
