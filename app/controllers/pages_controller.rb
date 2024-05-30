@@ -5,14 +5,6 @@ skip_before_action :authenticate_user!, only: :home
     @bikes = Bike.all
     @bikes = @bikes.where(type: params[:type]) if params[:type].present?
     @bikes = @bikes.where(price: price_range(params[:price])) if params[:price].present?
-    @markers = User.all.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {user: user}),
-        marker_html: render_to_string(partial: "marker")
-      }
-    end
   end
 
   def owner_dashboard

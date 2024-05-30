@@ -2,9 +2,16 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
-
     @bikes = Bike.all
- 
+    @markers = User.all.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {user: user}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
+
   end
 
   def new
