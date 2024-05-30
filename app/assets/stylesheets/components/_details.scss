@@ -9,10 +9,12 @@
 
 }
 .detail_type {
-  background-color: $blueJO;
+  background-color: #F4F4F4;
   border-radius: 5px;
-  color: white;
-  padding: 3px;
+  border-color: $blueJO;
+  border: solid;
+  color: $blueJO;
+  padding: 2px;
   margin-right: 5px;
   width: 150px;
   text-align: center;
