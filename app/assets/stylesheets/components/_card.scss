@@ -36,3 +36,9 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.datepicker {
+  position: sticky;
+  top: 0;
+  align-self: flex-start; /* Assurez-vous que la div est alignée au début de la colonne */
+}

@@ -1,4 +1,4 @@
-<div class="container d-flex m-3 p-3 shadow mx-auto rounded-3">
+<div class="container d-flex m-3 p-3 shadow mx-auto rounded-3" data-controller="datepicker">
     <div class="row d-flex m-4">
       <div class= "col-12">
         <img class= "img-fluid detail_img shadow" src="<%= cl_image_path @bike.photo.key %>" />
@@ -11,19 +11,19 @@
           <%= @bike.type %>
         </div>
         <div class="detail_price">
-          <p><strong><%= @bike.price %> €</strong> per day</p>
+          <p><strong><span data-datepicker-target="price"><%= @bike.price %></span> €</strong> per day</p>
         </div>
         <%= @bike.description %>
       </div>
     </div>
 
-  <div class= "col-4 pt-5">
-    <%= simple_form_for [@bike, @rental], html: { data: { controller: 'datepicker' } } do |f| %>
+  <div class= "datepicker col-4 pt-5">
+    <%= simple_form_for [@bike, @rental], html: { data: { action: 'change->datepicker#display_price' } } do |f| %>
       <%= f.input :start_date,
                   as: :string,
                   input_html: {
                     data: {
-                      datepicker_target: 'startDateInput'
+                      datepicker_target: 'startDateInput',
                     }
                   } %>
       <%= f.input :end_date,
@@ -35,5 +35,7 @@
                   } %>
       <%= f.submit 'Book now!', class: 'btn btn-warning' %>
     <% end %>
+    <br>
+    <p data-datepicker-target="days"></p>
   </div>
 </div>
