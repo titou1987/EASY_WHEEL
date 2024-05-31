@@ -1,4 +1,4 @@
-<div class="container m-3 p-3 shadow mx-auto rounded-3">
+<div class="container m-3 p-3 border mx-auto rounded-5">
   <div class="column">
     <div class="row"></div>
     <h2 class="my-0 mx-4">My rentals</h2>
@@ -19,14 +19,14 @@
       <tbody>
         <% @rentals.each_with_index do |rental,i| %>
           <tr>
-            <th scope="row"><%= i + 1 %></th>
-            <td><%= rental.bike.bike_name %></td>
-            <td><%= rental.user.first_name %> <%= rental.user.last_name %></td>
-            <td><%= rental.start_date %></td>
-            <td><%= rental.end_date %></td>
-            <td><%= (rental.end_date - rental.start_date + 1).to_i %></td>
-            <td><%= (rental.end_date - rental.start_date + 1).to_i * rental.bike.price %> €</td>
-            <td>
+            <th class="pt-5" scope="row"><%= i + 1 %></th>
+            <td><img class= "image-dash img-fluid detail_img rounded-1 object-fit-cover object-position-center" src="<%= cl_image_path rental.bike.photo.key %>"/></td>
+            <td class="pt-5"><%= rental.user.first_name %> <%= rental.user.last_name %></td>
+            <td class="pt-5"><%= rental.start_date %></td>
+            <td class="pt-5"><%= rental.end_date %></td>
+            <td class="pt-5"><%= (rental.end_date - rental.start_date + 1).to_i %></td>
+            <td class="pt-5"><%= (rental.end_date - rental.start_date + 1).to_i * rental.bike.price %> €</td>
+            <td class="pt-5">
               <% if rental.status == "pending" %>
               <div class="dropdown me-5">
                 <button class="btn btn-outline-warning dropdown-toggle btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,7 +53,7 @@
         <% end %>
       </tbody>
     </table>
-    <div class="d-flex my-4" >
+    <div class="d-flex my-4 mt-5" >
       <h2 class="my-0 mx-4">My bikes</h2>
       <%= link_to 'Add a bike', new_bike_path, class: 'btn btn-warning' %>
     </div>
