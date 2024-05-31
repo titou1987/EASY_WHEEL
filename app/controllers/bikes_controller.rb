@@ -8,6 +8,12 @@ class BikesController < ApplicationController
 
     if params[:city].present?
       @users = User.all.near(params[:city])
+      @bikes =[]
+      @users.map do |user|
+        user.bikes.map do |bike|
+          @bikes<< bike
+        end
+      end
     else
       @users = @bikes.map do |bike|
         bike.user
