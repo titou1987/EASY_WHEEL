@@ -1,15 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-bicycle"></i>
-    <% end %>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto">
+    <div>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <i class="fa-solid fa-bicycle"></i>
+      <% end %>
+    </div>
+    <div class="ml-auto">
+      <div class="navbar-text align-middle d-inline-block">
+              <% unless current_page?(root_path) || current_page?(bikes_path) %>
+        <%= link_to "See all bikes", bikes_path, class: "nav-link" %>
+      <% end %>
+      </div>
       <% if user_signed_in? %>
-        <div class="dropdown me-5">
-          <button class="btn btn-outline-warning dropdown-toggle btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="dropdown me-5 d-inline-block">
+          <button class="btn nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             My Dashboards
           </button>
           <ul class="dropdown-menu">
@@ -17,25 +21,30 @@
             <li><%= link_to 'My Renter Space', renter_dashboard_path, class: 'dropdown-item' %></li>
           </ul>
         </div>
-        <li class="nav-item dropdown">
-        <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
-          <% else %>
-            <%= image_tag "avatar-homme.png", class: "avatar", alt: "dropdown menu" %>
-          <% end %>
-
-        </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login/Sign-up", new_user_session_path, class: "nav-link"%>
-        </li>
       <% end %>
-    </ul>
-  </div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <%= image_tag "avatar-homme.png", class: "avatar", alt: "dropdown menu" %>
+              <% end %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login/Sign-up", new_user_session_path, class: "nav-link"%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
