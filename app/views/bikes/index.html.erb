@@ -47,24 +47,24 @@
     </div>
   </div>
 
-  <div class="cards-grid">
-    <% @bikes.each do |bike| %>
-      <%= link_to bike_path(bike), class: "card card-index mx-auto justify-content-start" do %>
-        <img class="card-img-top" src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>">
-        <div class="card-body">
-          <h2><%= bike.bike_name %></h2>
-          <h3><strong><%= bike.price.to_i %> €</strong> per day</h3>
-          <p><%= bike.description %></p>
-        </div>
+  <div class="d-flex justify-content-between">
+    <div class="cards-grid gap-2">
+      <% @bikes.each do |bike| %>
+        <%= link_to bike_path(bike), class: "card card-index mx-auto" do %>
+          <img class="card-img-top" src="<%= cl_image_path bike.photo.key %>" alt="<%= bike.bike_name %>">
+          <div class="card-body">
+            <h2><%= bike.bike_name %></h2>
+            <h3><strong><%= bike.price.to_i %> €</strong> per day</h3>
+            <p><%= bike.description %></p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
-  <div >
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    <div class="mapindex w-100 rounded-5 m-3" style="height: 500px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
