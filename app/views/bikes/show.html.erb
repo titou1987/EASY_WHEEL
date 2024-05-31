@@ -22,26 +22,33 @@
         </div>
       </div>
     </div>
-
-  <div class= "datepicker col-4 m-3 p-3 border mx-auto rounded-5">
-    <%= simple_form_for [@bike, @rental], html: { data: { action: 'change->datepicker#display_price' } } do |f| %>
-      <%= f.input :start_date,
-                  as: :string,
-                  input_html: {
-                    data: {
-                      datepicker_target: 'startDateInput',
-                    }
-                  }, required: true %>
-      <%= f.input :end_date,
-                  as: :string,
-                  input_html: {
-                    data: {
-                      datepicker_target: 'endDateInput'
-                    }
-                  }, required: true %>
-      <%= f.submit 'Book now!', class: 'btn btn-warning' %>
-    <% end %>
-    <br>
-    <p data-datepicker-target="days"></p>
+  <div class="col-4 datepicker">
+    <div class= "m-3 p-3 border mx-auto rounded-5">
+      <%= simple_form_for [@bike, @rental], html: { data: { action: 'change->datepicker#display_price' } } do |f| %>
+        <%= f.input :start_date,
+                    as: :string,
+                    input_html: {
+                      data: {
+                        datepicker_target: 'startDateInput',
+                      }
+                    }, required: true %>
+        <%= f.input :end_date,
+                    as: :string,
+                    input_html: {
+                      data: {
+                        datepicker_target: 'endDateInput'
+                      }
+                    }, required: true %>
+        <%= f.submit 'Book now!', class: 'btn btn-warning' %>
+      <% end %>
+      <br>
+      <p data-datepicker-target="days"></p>
+    </div>
+      <div style="width: 100%; height: 200px;"
+          class="rounded-5"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
   </div>
 </div>
