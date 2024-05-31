@@ -1,18 +1,18 @@
 <%= simple_form_for(bike, html: { class: 'form-horizontal', multipart: true }) do |f| %>
   <div class="mb-3">
-    <%= f.input :bike_name, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formbike' } %>
+    <%= f.input :bike_name, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formlabel' } %>
   </div>
   <div class="mb-3">
-    <%= f.input :type, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formbike' }, collection: ['Cargo', 'Tandem', 'Trailer', 'Longtail', 'Gravel'] %>
+    <%= f.input :type, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formlabel' }, collection: ['Cargo', 'Tandem', 'Trailer', 'Longtail', 'Gravel'] %>
   </div>
   <div class="mb-3">
-    <%= f.input :description, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formbike' } %>
+    <%= f.input :description, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formlabel' } %>
   </div>
   <div class="mb-3">
-    <%= f.input :price, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formbike' } %>
+    <%= f.input :price, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formlabel' } %>
   </div>
   <div class="mb-3">
-    <%= f.input :photo, as: :file, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formbike' } %>
+    <%= f.input :photo, as: :file, input_html: { class: 'form-control form-control-custom text-formbike' }, label_html: { class: 'form-label text-formlabel' } %>
   </div>
   <div class="text-center">
     <%= f.submit "Add my bike", class: "btn btn-primary btn-custom" %>

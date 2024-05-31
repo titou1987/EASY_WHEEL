@@ -2,9 +2,14 @@
   color: $blueJO !important;
 }
 
+.text-formlabel {
+  color: #ffffff !important;
+}
+
 .card-custom {
   border-radius: 1rem; /* Rounded corners for the card */
-  background-color: #fbe0c3;
+  background-color: rgba(251, 224, 195, 0.1);
+  backdrop-filter: blur(2px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -13,9 +18,9 @@
 }
 
 .btn-custom {
-  background-color: $blueJO;
-  color: white;
-  border: 1px outset #665c5c;
+  background-color: $blueJO !important;
+  color: white !important;
+  border: 1px #ffffff;
   border-radius: 0.5rem; /* Rounded corners for button */
   width: 100%;
 }
@@ -26,13 +31,8 @@
 }
 
 .btn-custom:hover {
-  background-color: $blueJO;
-  color: white;
-  border: 1px outset #665c5c;
-  border-radius: 0.5rem; /* Rounded corners for button */
-  width: 100%;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    0 17px 50px 0 rgba(255, 255, 255, 0.19);
 }
 
 .container-background {
