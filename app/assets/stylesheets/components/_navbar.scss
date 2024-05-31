@@ -1,5 +1,6 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  display: flex;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -29,10 +30,17 @@
   &:hover {
     background-color: white;
     color: $blueJO;
+    border: 2px solid $blueJO;
   }
 }
 
-.btn-custom {
-  color: $blueJO;
-  background: transparent;
+.ml-auto {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Aligne les éléments à droite */
+}
+
+.nav-link,
+.dropdown {
+  margin-right: 10px; /* Ajoute un espacement de 10px entre les boutons */
 }
