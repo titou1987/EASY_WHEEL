@@ -39,10 +39,11 @@
         City
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Paris</a></li>
-        <li><a class="dropdown-item" href="#">Lyon</a></li>
-        <li><a class="dropdown-item" href="#">Marseille</a></li>
-        <li><a class="dropdown-item" href="#">Toulouse</a></li>
+        <%= link_to 'All', bikes_path(anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Lyon', bikes_path(city: 'Lyon', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Marseille', bikes_path(city: 'Marseille', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Paris', bikes_path(city: 'Paris', anchor: "results"), class: 'dropdown-item' %>
+        <%= link_to 'Toulouse', bikes_path(city: 'Toulouse', anchor: "results"), class: 'dropdown-item' %>
       </ul>
     </div>
   </div>
