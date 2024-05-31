@@ -17,7 +17,7 @@ connect() {
       console.log(total_day);
       const price = this.priceTarget.innerText;
       const total_price = price*total_day;
-      this.daysTarget.innerHTML = `You are booking <strong>${total_day}</strong> days for <strong>${total_price}</strong> €`;
+      this.daysTarget.innerHTML = `You are booking : <strong>${total_day}</strong> days <br><h4>Total price : <strong>${total_price}</strong> €</h4>`;
 
     }
   }
